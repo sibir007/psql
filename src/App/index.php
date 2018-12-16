@@ -25,8 +25,9 @@ foreach ($data as $value) {
 	$stmt->execute($value);
 }
 
-$stmt = $pdo->prepare('select name from users where role = ? and name != ?');
-$stmt->execute(['member', ' ']);
+$stmt = $pdo->prepare('select name from users where role = :role');
+
+$stmt->execute([':role' => 'member']);
 
 echo '<pre>';
 print_r($stmt->fetchAll());
