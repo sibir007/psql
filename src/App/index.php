@@ -28,4 +28,6 @@ foreach ($data as $value) {
 $stmt = $pdo->prepare('select name from users where role = ? and name != ?');
 $stmt->execute(['member', ' ']);
 
+echo '<pre>';
 print_r($stmt->fetchAll());
+echo '<pre>';
