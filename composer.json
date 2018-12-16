@@ -1,0 +1,12 @@
+{
+    "name": "dima/psql",
+    "type": "project",
+    "license": "free",
+    "authors": [
+        {
+            "name": "Dima Sibiryakov",
+            "email": "sibiriakoff2006@yandex.ru"
+        }
+    ],
+    "require": {}
+}
