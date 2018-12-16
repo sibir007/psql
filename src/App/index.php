@@ -25,9 +25,11 @@ foreach ($data as $value) {
 	$stmt->execute($value);
 }
 
-$stmt = $pdo->prepare('select name from users where role = :role');
+$name = "a";
+$value = "$name%";
+$stmt = $pdo->prepare('select * from users where name like ?');
 
-$stmt->execute([':role' => 'member']);
+$stmt->execute([$value]);
 
 echo '<pre>';
 print_r($stmt->fetchAll());
