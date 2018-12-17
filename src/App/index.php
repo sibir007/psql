@@ -17,7 +17,7 @@ $pdo->exec("drop table users");
 $pdo->exec("create table users (id integer, name text, role text)");
 $data = [
 	[1, 'john', 'member'],
-	[2, 'mike', 'admin'],
+	[9, 'mike', 'admin'],
 	[3, 'adel', 'member']
 ];
 $stmt = $pdo->prepare("insert into users values (?, ?, ?)");
@@ -25,11 +25,10 @@ foreach ($data as $value) {
 	$stmt->execute($value);
 }
 
-$name = "a";
-$value = "$name%";
-$stmt = $pdo->prepare('select * from users where name like ?');
-
-$stmt->execute([$value]);
+$idx = [1, 2, 3];
+$in = implode(', ', array_fill(0, sizeof($idx), '?'));
+$stmt = $pdo->prepare("select * from users where id in ($in)");
+$stmt->execute($idx);
 
 echo '<pre>';
 print_r($stmt->fetchAll());
